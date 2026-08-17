@@ -55,6 +55,12 @@
                 radial-gradient(ellipse at 50% 80%, rgba(50, 50, 100, 0.04) 0%, transparent 50%);
             pointer-events: none;
             z-index: 0;
+            animation: bgShift 15s ease-in-out infinite;
+        }
+
+        @keyframes bgShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
         }
 
         .app-container {
@@ -63,6 +69,48 @@
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Toast Notification */
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .toast {
+            padding: 15px 25px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            animation: toastIn 0.5s ease, toastOut 0.5s ease 3s forwards;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+        }
+
+        @keyframes toastIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes toastOut {
+            from { opacity: 1; transform: translateY(0); }
+            to { opacity: 0; transform: translateY(-20px); }
         }
 
         /* Navbar */
@@ -83,6 +131,12 @@
             position: sticky;
             top: 15px;
             z-index: 100;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .logo {
@@ -97,6 +151,12 @@
             align-items: center;
             gap: 10px;
             cursor: pointer;
+            animation: logoPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes logoPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
         .logo-icon {
@@ -167,7 +227,29 @@
 
         .menu-btn:hover {
             background: var(--glass-hover);
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(90deg);
+        }
+
+        /* Add Account Button */
+        .add-account-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--accent-gradient);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(229, 9, 20, 0.3);
+        }
+
+        .add-account-btn:hover {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 10px 30px rgba(229, 9, 20, 0.5);
         }
 
         /* Dropdown Menu */
@@ -188,17 +270,6 @@
         .dropdown-menu.active {
             display: block;
             animation: slideDown 0.3s ease;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .dropdown-item {
@@ -230,6 +301,12 @@
             border: 1px solid var(--glass-border);
             box-shadow: var(--shadow-lg);
             height: 500px;
+            animation: slideUp 0.8s ease;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .slider-container {
@@ -256,6 +333,16 @@
             background-size: cover;
             background-position: center top;
             filter: brightness(0.5) saturate(1.1);
+            transition: transform 6s ease;
+        }
+
+        .slider-slide.active .slider-backdrop {
+            animation: kenBurns 6s ease forwards;
+        }
+
+        @keyframes kenBurns {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
         }
 
         .slider-overlay {
@@ -281,6 +368,12 @@
             font-weight: 800;
             margin-bottom: 15px;
             text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+            animation: textReveal 1s ease;
+        }
+
+        @keyframes textReveal {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .slider-meta {
@@ -386,6 +479,26 @@
             transition: var(--transition);
             font-family: inherit;
             box-shadow: 0 5px 20px rgba(229, 9, 20, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-primary:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         .btn-primary:hover {
@@ -399,6 +512,7 @@
             gap: 10px;
             flex-wrap: wrap;
             margin: 20px 0;
+            animation: fadeIn 0.5s ease;
         }
 
         .category-tab {
@@ -415,6 +529,7 @@
 
         .category-tab:hover {
             background: var(--glass-hover);
+            transform: translateY(-2px);
         }
 
         .category-tab.active {
@@ -430,6 +545,7 @@
             margin: 30px 0 20px;
             flex-wrap: wrap;
             gap: 15px;
+            animation: fadeIn 0.5s ease;
         }
 
         .section-title {
@@ -446,6 +562,12 @@
             height: 30px;
             background: var(--accent-gradient);
             border-radius: 10px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
 
         .btn-more {
@@ -473,6 +595,7 @@
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
             gap: 20px;
             padding-bottom: 20px;
+            animation: fadeIn 0.5s ease;
         }
 
         .movie-card {
@@ -485,6 +608,12 @@
             transition: var(--transition);
             aspect-ratio: 2/3;
             will-change: transform;
+            animation: cardAppear 0.5s ease backwards;
+        }
+
+        @keyframes cardAppear {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         .movie-card:hover {
@@ -553,11 +682,6 @@
         .movie-details-page.active {
             display: block;
             animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
         }
 
         .details-backdrop {
@@ -920,6 +1044,9 @@
     </style>
 </head>
 <body>
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
     <div class="app-container">
         <!-- Navbar -->
         <nav class="navbar">
@@ -957,6 +1084,7 @@
                         </div>
                     </div>
                 </div>
+                <button class="add-account-btn" onclick="addAccount()" title="إضافة حساب">+</button>
             </div>
         </nav>
 
@@ -1023,12 +1151,12 @@
             <div class="section-header">
                 <h2 class="section-title">لمحة عن الموقع</h2>
             </div>
-            <div style="padding: 40px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--card-radius);">
-                <h3 style="font-size: 2rem; margin-bottom: 20px;">📺 عراق تي في</h3>
-                <p style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 20px;">
+            <div style="padding: 40px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--card-radius); text-align: center;">
+                <h3 style="font-size: 2.5rem; margin-bottom: 20px;">📺 عراق تي في</h3>
+                <p style="font-size: 1.3rem; color: var(--text-secondary); margin-bottom: 20px;">
                     منصة عراقية خالصة من أيادي عراقية 🇮🇶
                 </p>
-                <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 20px;">
+                <p style="font-size: 1.2rem; color: var(--accent); margin-bottom: 20px; font-weight: 700;">
                     المطور: علي علاء
                 </p>
                 <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 20px;">
@@ -1050,7 +1178,7 @@
         <div class="details-content">
             <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
                 <h1 class="details-title" id="detailsTitle" style="margin: 0;"></h1>
-                <button onclick="toggleFavorite()" style="background: none; border: none; font-size: 2rem; cursor: pointer;" id="favBtn">🤍</button>
+                <button onclick="toggleFavorite()" style="background: none; border: none; font-size: 2rem; cursor: pointer; transition: transform 0.3s;" id="favBtn">🤍</button>
             </div>
             <div class="details-meta">
                 <span class="details-rating" id="detailsRating"></span>
@@ -1091,7 +1219,7 @@
         const TMDB_IMAGE_BASE = 'https://image.tmdb.org/t/p/w500';
         const TMDB_IMAGE_ORIGINAL = 'https://image.tmdb.org/t/p/original';
 
-        // Server configurations - Updated with new servers
+        // Server configurations
         const servers = [
             { id: 1, name: 'سيرفر 1', url: 'https://vidsrc.pro/embed/movie/' },
             { id: 2, name: 'سيرفر 2', url: 'https://embed.su/embed/movie/' },
@@ -1121,6 +1249,7 @@
         let currentPage = 'home';
         let currentSeason = 0;
         let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+        let watchHistory = JSON.parse(localStorage.getItem('watchHistory') || '[]');
 
         // DOM Elements
         const searchInput = document.getElementById('searchInput');
@@ -1131,7 +1260,45 @@
             loadAllData();
             setupSearch();
             startSlider();
+            showToast('مرحباً بك في عراق تي في! 🎬');
         });
+
+        function showToast(message) {
+            const toastContainer = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            toastContainer.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.remove();
+            }, 3500);
+        }
+
+        function addAccount() {
+            const name = prompt('أدخل اسمك:');
+            if (name && name.trim()) {
+                localStorage.setItem('userName', name.trim());
+                showToast(`تم إنشاء حساب باسم: ${name} ✅`);
+            }
+        }
+
+        function addToWatchHistory(item) {
+            const index = watchHistory.findIndex(w => w.id === item.id);
+            if (index === -1) {
+                watchHistory.unshift({
+                    id: item.id,
+                    title: item.title || item.name,
+                    poster_path: item.poster_path,
+                    vote_average: item.vote_average,
+                    type: item.type || 'movie',
+                    watchedAt: new Date().toISOString()
+                });
+                // Keep only last 20 items
+                watchHistory = watchHistory.slice(0, 20);
+                localStorage.setItem('watchHistory', JSON.stringify(watchHistory));
+            }
+        }
 
         async function fetchTMDB(endpoint) {
             try {
@@ -1233,8 +1400,9 @@
             const grid = document.getElementById(gridId);
             grid.innerHTML = '';
             
-            movies.forEach(movie => {
+            movies.forEach((movie, index) => {
                 const card = createMovieCard(movie, 'movie');
+                card.style.animationDelay = `${index * 0.05}s`;
                 grid.appendChild(card);
             });
         }
@@ -1243,8 +1411,9 @@
             const grid = document.getElementById(gridId);
             grid.innerHTML = '';
             
-            shows.forEach(show => {
+            shows.forEach((show, index) => {
                 const card = createMovieCard(show, 'tv');
+                card.style.animationDelay = `${index * 0.05}s`;
                 grid.appendChild(card);
             });
         }
@@ -1390,8 +1559,9 @@
                 return;
             }
             
-            favorites.forEach(item => {
+            favorites.forEach((item, index) => {
                 const card = createMovieCard(item, item.type || 'movie');
+                card.style.animationDelay = `${index * 0.05}s`;
                 grid.appendChild(card);
             });
         }
@@ -1412,9 +1582,11 @@
                     type: currentMovie.type || 'movie'
                 });
                 favBtn.textContent = '❤️';
+                showToast('تمت الإضافة إلى المفضلة ❤️');
             } else {
                 favorites.splice(index, 1);
                 favBtn.textContent = '🤍';
+                showToast('تمت الإزالة من المفضلة');
             }
             
             localStorage.setItem('favorites', JSON.stringify(favorites));
@@ -1456,7 +1628,7 @@
             const categoriesDiv = document.getElementById('movieCategories');
             categoriesDiv.innerHTML = '';
             
-            const mainGenres = [28, 35, 27, 878, 18, 53, 10749, 80, 12, 14];
+            const mainGenres = [28, 35, 27, 878, 18, 53, 10749, 80, 12, 14, 16, 36, 10402, 9648, 10752];
             const allTab = document.createElement('button');
             allTab.className = 'category-tab active';
             allTab.textContent = 'الكل';
@@ -1476,7 +1648,7 @@
             const categoriesDiv = document.getElementById('tvCategories');
             categoriesDiv.innerHTML = '';
             
-            const mainGenres = [10759, 35, 18, 10765, 9648, 80, 10751, 10762, 10764, 10768];
+            const mainGenres = [10759, 35, 18, 10765, 9648, 80, 10751, 10762, 10764, 10768, 10763, 10767];
             const allTab = document.createElement('button');
             allTab.className = 'category-tab active';
             allTab.textContent = 'الكل';
@@ -1503,7 +1675,7 @@
                 grid.innerHTML = '<div class="loading-spinner"><div class="spinner"></div></div>';
                 
                 const endpoint = genreId 
-                    ? `/discover/movie?language=ar-SA&with_genres=${genreId}&sort_by=popularity.desc&page=1`
+                    ? `/discover/movie?language=ar-SA&with_genres=${genreId}&sort_by=popularity.desc&page=1&vote_count.gte=100`
                     : '/movie/popular?language=ar-SA&page=1';
                 
                 const data = await fetchTMDB(endpoint);
@@ -1526,7 +1698,7 @@
                 grid.innerHTML = '<div class="loading-spinner"><div class="spinner"></div></div>';
                 
                 const endpoint = genreId 
-                    ? `/discover/tv?language=ar-SA&with_genres=${genreId}&sort_by=popularity.desc&page=1`
+                    ? `/discover/tv?language=ar-SA&with_genres=${genreId}&sort_by=popularity.desc&page=1&vote_count.gte=100`
                     : '/tv/popular?language=ar-SA&page=1';
                 
                 const data = await fetchTMDB(endpoint);
@@ -1573,6 +1745,9 @@
                 
                 currentMovie = data;
                 currentMovie.type = type;
+                
+                // Add to watch history
+                addToWatchHistory(currentMovie);
                 
                 // Update favorite button
                 const isFav = favorites.some(f => f.id === currentMovie.id);
@@ -1630,6 +1805,7 @@
                 document.body.style.overflow = 'hidden';
             } catch (error) {
                 console.error('Error loading movie details:', error);
+                showToast('حدث خطأ في تحميل البيانات');
             }
         }
 
@@ -1670,17 +1846,21 @@
                     const seasonsContainer = document.getElementById('seasonsContainer');
                     seasonsContainer.innerHTML = '';
                     
-                    data.seasons.forEach((season, index) => {
-                        if (season.season_number === 0) return; // Skip specials
+                    let firstSeasonLoaded = false;
+                    
+                    data.seasons.forEach((season) => {
+                        if (season.season_number === 0) return;
                         
                         const btn = document.createElement('button');
-                        btn.className = 'season-btn' + (index === 0 ? ' active' : '');
+                        btn.className = 'season-btn';
                         btn.textContent = `الموسم ${season.season_number}`;
                         btn.onclick = () => loadEpisodes(tvId, season.season_number, btn);
                         seasonsContainer.appendChild(btn);
                         
-                        if (index === 0) {
+                        if (!firstSeasonLoaded) {
+                            btn.classList.add('active');
                             loadEpisodes(tvId, season.season_number, btn);
+                            firstSeasonLoaded = true;
                         }
                     });
                 }
@@ -1691,7 +1871,6 @@
 
         async function loadEpisodes(tvId, seasonNumber, btnElement) {
             try {
-                // Update active season button
                 document.querySelectorAll('.season-btn').forEach(btn => {
                     btn.classList.remove('active');
                 });
@@ -1724,9 +1903,7 @@
         }
 
         function loadEpisodeServer(tvId, seasonNumber, episodeNumber) {
-            // Update player with episode
             const serverIndex = currentServer;
-            const type = 'tv';
             let url = '';
             
             switch(serverIndex) {
@@ -1750,8 +1927,8 @@
             }
             
             document.getElementById('playerFrame').src = url;
+            showToast(`تشغيل الحلقة ${episodeNumber} من الموسم ${seasonNumber}`);
             
-            // Scroll to player
             document.querySelector('.server-section').scrollIntoView({ behavior: 'smooth' });
         }
 
@@ -1767,14 +1944,12 @@
                 serverButtons.appendChild(btn);
             });
             
-            // Load first server
             switchServer(0);
         }
 
         function switchServer(index) {
             currentServer = index;
             
-            // Update active button
             const buttons = document.querySelectorAll('.server-btn');
             buttons.forEach((btn, i) => {
                 btn.classList.toggle('active', i === index);
@@ -1787,25 +1962,25 @@
             let url = '';
             
             switch(index) {
-                case 0: // vidsrc.pro
+                case 0:
                     url = type === 'tv' 
                         ? `https://vidsrc.pro/embed/tv/${movieId}/1/1`
                         : `https://vidsrc.pro/embed/movie/${movieId}`;
                     break;
-                case 1: // embed.su
+                case 1:
                     url = type === 'tv'
                         ? `https://embed.su/embed/tv/${movieId}/1/1`
                         : `https://embed.su/embed/movie/${movieId}`;
                     break;
-                case 2: // vidsrc.me
+                case 2:
                     url = type === 'tv'
                         ? `https://vidsrc.me/embed/tv?tmdb=${movieId}&season=1&episode=1`
                         : `https://vidsrc.me/embed/movie?tmdb=${movieId}`;
                     break;
-                case 3: // multiembed.mov
+                case 3:
                     url = `https://multiembed.mov/?video_id=${movieId}&tmdb=1`;
                     break;
-                case 4: // superembed.stream
+                case 4:
                     url = `https://superembed.stream/index.php?video_id=${movieId}&tmdb=1`;
                     break;
                 default:
