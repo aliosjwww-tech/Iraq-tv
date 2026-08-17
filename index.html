@@ -519,7 +519,8 @@
 
         async function loadTrendingMovies() {
             try {
-                const data = await fetchTMDB('/trending/movie/week?language=ar-SA&page=1');
+                const data = await fetchTMDB('/discover/movie?language=ar-SA&sort_by=popularity.desc&page=1');
+
                 
                 if (data.results && data.results.length > 0) {
                     currentMovies = data.results;
