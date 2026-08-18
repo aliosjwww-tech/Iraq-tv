@@ -6,8 +6,8 @@
     
     <!-- SEO Meta Tags -->
     <title>عراق تي في | Iraq TV - مشاهدة أفلام ومسلسلات أون لاين بدون إعلانات</title>
-    <meta name="description" content="عراق تي في - منصة عراقية لمشاهدة أحدث الأفلام والمسلسلات أون لاين بجودة عالية وبدون إعلانات مزعجة. أفلام 2026، مسلسلات حصرية، سيرفرات متعددة.">
-    <meta name="keywords" content="عراق تي في, Iraq TV, مشاهدة أفلام, مسلسلات, أفلام 2026, أفلام أون لاين, مسلسلات تركية, مسلسلات عربية, سينما, منصة عراقية">
+    <meta name="description" content="عراق تي في - منصة عراقية لمشاهدة أحدث الأفلام والمسلسلات أون لاين بجودة عالية وبدون إعلانات مزعجة. أفلام 2026، مسلسلات حصرية، 10 سيرفرات متعددة.">
+    <meta name="keywords" content="عراق تي في, Iraq TV, مشاهدة أفلام, مسلسلات, أفلام 2026, أفلام أون لاين, سيرفرات متعددة, منصة عراقية">
     <meta name="author" content="علي علاء">
     <meta name="language" content="Arabic">
     <meta http-equiv="content-language" content="ar">
@@ -17,7 +17,7 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="عراق تي في - Iraq TV">
     <meta property="og:title" content="عراق تي في | مشاهدة أفلام ومسلسلات أون لاين">
-    <meta property="og:description" content="منصة عراقية لمشاهدة أحدث الأفلام والمسلسلات بجودة عالية وبدون إعلانات">
+    <meta property="og:description" content="منصة عراقية لمشاهدة أحدث الأفلام والمسلسلات بجودة عالية وبدون إعلانات - 10 سيرفرات">
     <meta property="og:url" content="https://aliosjwww-tech.github.io/Iraq-tv/">
     <meta property="og:locale" content="ar_AR">
     
@@ -829,7 +829,7 @@
             z-index: 10;
         }
 
-        /* Servers */
+        /* Servers - 10 Servers Grid */
         .server-section {
             margin-top: 25px;
         }
@@ -840,43 +840,49 @@
         }
 
         .server-buttons {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 12px;
             margin-bottom: 20px;
         }
 
         .server-btn {
-            padding: 15px 25px;
+            padding: 15px;
             background: var(--glass-bg);
             border: 2px solid var(--glass-border);
             color: var(--text-primary);
-            border-radius: 15px;
+            border-radius: 12px;
             cursor: pointer;
             font-family: inherit;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 5px;
-            min-width: 150px;
-            flex: 1;
-            max-width: 250px;
+            transition: var(--transition);
+        }
+
+        .server-btn:hover {
+            background: var(--glass-hover);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-sm);
         }
 
         .server-btn.active {
             border-color: var(--accent);
             background: var(--accent-gradient);
+            box-shadow: 0 10px 30px rgba(229, 9, 20, 0.4);
         }
 
         .server-name {
             font-weight: 700;
+            font-size: 1rem;
         }
 
-        .server-quality {
-            font-size: 0.85rem;
-            opacity: 0.8;
+        .server-desc {
+            font-size: 0.8rem;
+            opacity: 0.7;
         }
 
         .player-embed {
@@ -989,6 +995,10 @@
 
             .actor-movies {
                 padding: 0 20px 20px;
+            }
+
+            .server-buttons {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
             }
         }
     </style>
@@ -1125,7 +1135,7 @@
             </div>
             
             <div class="server-section">
-                <h3>🎬 سيرفرات المشاهدة</h3>
+                <h3>🎬 سيرفرات المشاهدة (10 سيرفرات)</h3>
                 <div class="server-buttons" id="serverButtons"></div>
                 <div class="player-embed">
                     <iframe id="playerFrame" src="" allowfullscreen allow="autoplay; encrypted-media"></iframe>
@@ -1163,10 +1173,20 @@
         const TMDB_IMAGE_BASE = 'https://image.tmdb.org/t/p/w500';
         const TMDB_IMAGE_ORIGINAL = 'https://image.tmdb.org/t/p/original';
 
+        // ============================================
+        // 10 Servers Configuration
+        // ============================================
         const servers = [
-            { id: 1, name: '👑 سيرفر VIP 1', quality: '1080p', movieUrl: 'https://vidsrc.cc/v2/embed/movie/', tvUrl: 'https://vidsrc.cc/v2/embed/tv/' },
-            { id: 2, name: '⚡ سيرفر VIP 2', quality: '720p', movieUrl: 'https://embed.su/embed/movie/', tvUrl: 'https://embed.su/embed/tv/' },
-            { id: 3, name: '🔧 سيرفر احتياطي', quality: 'Backup', movieUrl: 'https://vidsrc.vip/embed/movie/', tvUrl: 'https://vidsrc.vip/embed/tv/' }
+            { id: 1, name: 'VidSrc.cc', desc: 'الأفضل والأسرع', movieUrl: 'https://vidsrc.cc/v2/embed/movie/', tvUrl: 'https://vidsrc.cc/v2/embed/tv/' },
+            { id: 2, name: 'Embed.su', desc: 'خفيف ومرتب', movieUrl: 'https://embed.su/embed/movie/', tvUrl: 'https://embed.su/embed/tv/' },
+            { id: 3, name: 'VidSrc.me', desc: 'كلاسيكي ومضمون', movieUrl: 'https://vidsrc.me/embed/movie?tmdb=', tvUrl: 'https://vidsrc.me/embed/tv?tmdb=' },
+            { id: 4, name: 'AutoEmbed', desc: 'يدعم الجودات', movieUrl: 'https://player.autoembed.cc/embed/movie/', tvUrl: 'https://player.autoembed.cc/embed/tv/' },
+            { id: 5, name: '2Embed', desc: 'سيرفر قوي', movieUrl: 'https://www.2embed.cc/embed/', tvUrl: 'https://www.2embed.cc/embedtv/' },
+            { id: 6, name: 'VidZee', desc: 'سريع وبسيط', movieUrl: 'https://vidzee.to/embed/movie/', tvUrl: 'https://vidzee.to/embed/tv/' },
+            { id: 7, name: 'MovieBed', desc: 'ممتاز للاحتياط', movieUrl: 'https://moviebed.net/embed/', tvUrl: 'https://moviebed.net/embedtv/' },
+            { id: 8, name: 'VidSrc.vip', desc: 'بديل قوي وثابت', movieUrl: 'https://vidsrc.vip/embed/movie/', tvUrl: 'https://vidsrc.vip/embed/tv/' },
+            { id: 9, name: 'SuperEmbed', desc: 'يفتح بسرعة', movieUrl: 'https://superembed.stream/embed/movie/', tvUrl: 'https://superembed.stream/embed/tv/' },
+            { id: 10, name: 'MultiEmbed', desc: 'يجمع عدة مصادر', movieUrl: 'https://multiembed.mov/?video_id=', tvUrl: 'https://multiembed.mov/?video_id=' }
         ];
 
         const genres = {
@@ -1658,7 +1678,7 @@
                 
                 document.body.style.overflow = 'hidden';
             } catch (error) {
-                console.error('Error loading actor:', error);
+                console.error('Error:', error);
                 showToast('حدث خطأ في تحميل صفحة الممثل');
             }
         }
@@ -1714,9 +1734,18 @@
 
         function loadEpisodeServer(tvId, seasonNumber, episodeNumber) {
             const server = servers[currentServer];
-            const url = server.tvUrl + `${tvId}/${seasonNumber}/${episodeNumber}`;
+            let url = '';
+            if (server.name === 'VidSrc.me') {
+                url = `${server.tvUrl}${tvId}&season=${seasonNumber}&episode=${episodeNumber}`;
+            } else if (server.name === 'MultiEmbed') {
+                url = `${server.tvUrl}${tvId}&tmdb=1&s=${seasonNumber}&e=${episodeNumber}`;
+            } else if (server.name === '2Embed') {
+                url = `${server.tvUrl}${tvId}&s=${seasonNumber}&e=${episodeNumber}`;
+            } else {
+                url = server.tvUrl + `${tvId}/${seasonNumber}/${episodeNumber}`;
+            }
             document.getElementById('playerFrame').src = url;
-            showToast(`تشغيل الحلقة ${episodeNumber}`);
+            showToast(`تشغيل الحلقة ${episodeNumber} - ${server.name}`);
         }
 
         function setupServers(id, type) {
@@ -1725,7 +1754,7 @@
             servers.forEach((server, index) => {
                 const btn = document.createElement('button');
                 btn.className = 'server-btn' + (index === 0 ? ' active' : '');
-                btn.innerHTML = `<span class="server-name">${server.name}</span><span class="server-quality">${server.quality}</span>`;
+                btn.innerHTML = `<span class="server-name">${server.name}</span><span class="server-desc">${server.desc}</span>`;
                 btn.onclick = () => switchServer(index);
                 serverButtons.appendChild(btn);
             });
@@ -1736,9 +1765,34 @@
             currentServer = index;
             document.querySelectorAll('.server-btn').forEach((btn, i) => btn.classList.toggle('active', i === index));
             if (!currentMovie || !currentMovie.id) return;
+            
             const server = servers[index];
             const type = currentMovie.type || 'movie';
-            const url = type === 'tv' ? server.tvUrl + `${currentMovie.id}/1/1` : server.movieUrl + currentMovie.id;
+            const movieId = currentMovie.id;
+            let url = '';
+            
+            if (type === 'movie') {
+                if (server.name === 'VidSrc.me') {
+                    url = server.movieUrl + movieId;
+                } else if (server.name === 'MultiEmbed') {
+                    url = server.movieUrl + movieId + '&tmdb=1';
+                } else if (server.name === '2Embed' || server.name === 'MovieBed') {
+                    url = server.movieUrl + movieId;
+                } else {
+                    url = server.movieUrl + movieId;
+                }
+            } else {
+                if (server.name === 'VidSrc.me') {
+                    url = server.tvUrl + movieId + '&season=1&episode=1';
+                } else if (server.name === 'MultiEmbed') {
+                    url = server.tvUrl + movieId + '&tmdb=1&s=1&e=1';
+                } else if (server.name === '2Embed') {
+                    url = server.tvUrl + movieId + '&s=1&e=1';
+                } else {
+                    url = server.tvUrl + movieId + '/1/1';
+                }
+            }
+            
             document.getElementById('playerFrame').src = url;
         }
 
