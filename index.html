@@ -4,37 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     
-    <!-- SEO Meta Tags -->
     <title>عراق تي في | Iraq TV - مشاهدة أفلام ومسلسلات أون لاين بدون إعلانات</title>
     <meta name="description" content="عراق تي في - منصة عراقية لمشاهدة أحدث الأفلام والمسلسلات أون لاين بجودة عالية وبدون إعلانات مزعجة. أفلام 2026، مسلسلات حصرية، 10 سيرفرات متعددة.">
     <meta name="keywords" content="عراق تي في, Iraq TV, مشاهدة أفلام, مسلسلات, أفلام 2026, أفلام أون لاين, سيرفرات متعددة, منصة عراقية">
     <meta name="author" content="علي علاء">
     <meta name="language" content="Arabic">
     <meta http-equiv="content-language" content="ar">
-    <meta name="geo.region" content="IQ">
     
-    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="عراق تي في - Iraq TV">
     <meta property="og:title" content="عراق تي في | مشاهدة أفلام ومسلسلات أون لاين">
-    <meta property="og:description" content="منصة عراقية لمشاهدة أحدث الأفلام والمسلسلات بجودة عالية وبدون إعلانات - 10 سيرفرات">
+    <meta property="og:description" content="منصة عراقية لمشاهدة أحدث الأفلام والمسلسلات بجودة عالية وبدون إعلانات">
     <meta property="og:url" content="https://aliosjwww-tech.github.io/Iraq-tv/">
     <meta property="og:locale" content="ar_AR">
     
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="عراق تي في | مشاهدة أفلام ومسلسلات">
     <meta name="twitter:description" content="منصة عراقية لمشاهدة الأفلام والمسلسلات بدون إعلانات">
     
-    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="https://aliosjwww-tech.github.io/Iraq-tv/favicon.svg">
     <link rel="shortcut icon" href="https://aliosjwww-tech.github.io/Iraq-tv/favicon.svg">
     <link rel="apple-touch-icon" href="https://aliosjwww-tech.github.io/Iraq-tv/favicon.svg">
     
-    <!-- Canonical -->
     <link rel="canonical" href="https://aliosjwww-tech.github.io/Iraq-tv/">
     
-    <!-- Schema.org -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -46,7 +39,6 @@
     }
     </script>
     
-    <!-- DNS Prefetch -->
     <link rel="dns-prefetch" href="https://api.themoviedb.org">
     <link rel="dns-prefetch" href="https://image.tmdb.org">
     <link rel="preconnect" href="https://api.themoviedb.org" crossorigin>
@@ -117,7 +109,6 @@
             padding: 0 20px;
         }
 
-        /* Toast */
         .toast-container {
             position: fixed;
             top: 20px;
@@ -150,7 +141,6 @@
             to { opacity: 0; transform: translateY(-20px); }
         }
 
-        /* Navbar */
         .navbar {
             display: flex;
             align-items: center;
@@ -283,7 +273,6 @@
             background: var(--glass-hover);
         }
 
-        /* Hero Slider */
         .hero-slider {
             position: relative;
             margin: 25px 0;
@@ -418,7 +407,6 @@
             font-family: inherit;
         }
 
-        /* Movie Sections */
         .movie-section {
             padding: 15px 0;
         }
@@ -526,7 +514,6 @@
             font-size: 0.8rem;
         }
 
-        /* Static Grid */
         .movie-grid-static {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -543,7 +530,6 @@
             aspect-ratio: 2/3;
         }
 
-        /* Category Tabs */
         .category-tabs {
             display: flex;
             gap: 10px;
@@ -567,7 +553,6 @@
             border-color: var(--accent);
         }
 
-        /* Details Page */
         .movie-details-page {
             position: fixed;
             inset: 0;
@@ -685,7 +670,6 @@
             background: var(--accent-gradient);
         }
 
-        /* Cast Section */
         .cast-section {
             margin: 25px 0;
         }
@@ -743,7 +727,6 @@
             font-size: 0.8rem;
         }
 
-        /* Actor Page */
         .actor-page {
             position: fixed;
             inset: 0;
@@ -829,7 +812,6 @@
             z-index: 10;
         }
 
-        /* Servers - 10 Servers Grid */
         .server-section {
             margin-top: 25px;
         }
@@ -900,7 +882,6 @@
             border: none;
         }
 
-        /* Episodes */
         .episodes-section {
             margin: 25px 0;
         }
@@ -945,7 +926,6 @@
             color: var(--accent);
         }
 
-        /* Loading */
         .loading-spinner {
             display: flex;
             justify-content: center;
@@ -1007,7 +987,6 @@
     <div class="toast-container" id="toastContainer"></div>
 
     <div class="app-container">
-        <!-- Navbar -->
         <nav class="navbar">
             <div class="logo" onclick="showHome()">
                 <span class="logo-icon">📺</span>
@@ -1033,7 +1012,6 @@
             </div>
         </nav>
 
-        <!-- Home Content -->
         <div id="homeContent">
             <div class="hero-slider" id="heroSlider">
                 <div class="slider-container" id="sliderContainer"></div>
@@ -1075,27 +1053,29 @@
             </div>
         </div>
 
-        <!-- Movies Page -->
         <div id="moviesPage" style="display: none;">
             <div class="section-header"><h2 class="section-title">جميع الأفلام</h2></div>
             <div class="category-tabs" id="movieCategories"></div>
             <div class="movie-grid-static" id="allMoviesGrid"></div>
+            <div style="text-align: center; margin: 20px 0;">
+                <button class="btn-primary" id="loadMoreBtn" onclick="loadMoreMovies()" style="display: none;">تحميل المزيد</button>
+            </div>
         </div>
 
-        <!-- TV Page -->
         <div id="tvPage" style="display: none;">
             <div class="section-header"><h2 class="section-title">جميع المسلسلات</h2></div>
             <div class="category-tabs" id="tvCategories"></div>
             <div class="movie-grid-static" id="allTVGrid"></div>
+            <div style="text-align: center; margin: 20px 0;">
+                <button class="btn-primary" id="loadMoreTVBtn" onclick="loadMoreTVShows()" style="display: none;">تحميل المزيد</button>
+            </div>
         </div>
 
-        <!-- Favorites Page -->
         <div id="favoritesPage" style="display: none;">
             <div class="section-header"><h2 class="section-title">المفضلات ❤️</h2></div>
             <div class="movie-grid-static" id="favoritesGrid"></div>
         </div>
 
-        <!-- About Page -->
         <div id="aboutPage" style="display: none;">
             <div class="section-header"><h2 class="section-title">لمحة عن الموقع</h2></div>
             <div style="padding: 40px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; text-align: center;">
@@ -1107,7 +1087,6 @@
         </div>
     </div>
 
-    <!-- Movie Details Page -->
     <div class="movie-details-page" id="movieDetailsPage">
         <div class="details-backdrop">
             <img src="" alt="" id="detailsBackdrop">
@@ -1144,7 +1123,6 @@
         </div>
     </div>
 
-    <!-- Actor Page -->
     <div class="actor-page" id="actorPage">
         <button class="actor-back-btn" onclick="closeActorPage()">✕</button>
         <div class="actor-header">
@@ -1173,9 +1151,6 @@
         const TMDB_IMAGE_BASE = 'https://image.tmdb.org/t/p/w500';
         const TMDB_IMAGE_ORIGINAL = 'https://image.tmdb.org/t/p/original';
 
-        // ============================================
-        // 10 Servers Configuration
-        // ============================================
         const servers = [
             { id: 1, name: 'VidSrc.cc', desc: 'الأفضل والأسرع', movieUrl: 'https://vidsrc.cc/v2/embed/movie/', tvUrl: 'https://vidsrc.cc/v2/embed/tv/' },
             { id: 2, name: 'Embed.su', desc: 'خفيف ومرتب', movieUrl: 'https://embed.su/embed/movie/', tvUrl: 'https://embed.su/embed/tv/' },
@@ -1204,6 +1179,10 @@
         let currentSlide = 0;
         let sliderInterval = null;
         let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+        let currentMoviePage = 1;
+        let currentTVPage = 1;
+        let currentGenreFilter = null;
+        let currentTVGenreFilter = null;
 
         document.addEventListener('DOMContentLoaded', () => {
             loadAllData();
@@ -1407,6 +1386,8 @@
             document.getElementById('favoritesPage').style.display = 'none';
             document.getElementById('aboutPage').style.display = 'none';
             document.getElementById('dropdownMenu').classList.remove('active');
+            currentMoviePage = 1;
+            currentGenreFilter = null;
             loadAllMovies();
         }
 
@@ -1417,6 +1398,8 @@
             document.getElementById('favoritesPage').style.display = 'none';
             document.getElementById('aboutPage').style.display = 'none';
             document.getElementById('dropdownMenu').classList.remove('active');
+            currentTVPage = 1;
+            currentTVGenreFilter = null;
             loadAllTVShows();
         }
 
@@ -1477,17 +1460,65 @@
         async function loadAllMovies() {
             const grid = document.getElementById('allMoviesGrid');
             grid.innerHTML = '<div class="loading-spinner"><div class="spinner"></div></div>';
-            const data = await fetchTMDB('/discover/movie?language=ar-SA&sort_by=vote_average.desc&page=1&vote_count.gte=50');
-            if (data.results) displayMoviesInGrid('allMoviesGrid', data.results);
+            
+            const endpoint = currentGenreFilter 
+                ? `/discover/movie?language=ar-SA&with_genres=${currentGenreFilter}&sort_by=vote_average.desc&page=${currentMoviePage}&vote_count.gte=50`
+                : `/discover/movie?language=ar-SA&sort_by=vote_average.desc&page=${currentMoviePage}&vote_count.gte=50`;
+            
+            const data = await fetchTMDB(endpoint);
+            if (data.results) {
+                displayMoviesInGrid('allMoviesGrid', data.results);
+                document.getElementById('loadMoreBtn').style.display = data.page < data.total_pages ? 'inline-flex' : 'none';
+            }
             loadMovieCategories();
         }
 
         async function loadAllTVShows() {
             const grid = document.getElementById('allTVGrid');
             grid.innerHTML = '<div class="loading-spinner"><div class="spinner"></div></div>';
-            const data = await fetchTMDB('/discover/tv?language=ar-SA&sort_by=vote_average.desc&page=1&vote_count.gte=50');
-            if (data.results) displayTVInGrid('allTVGrid', data.results);
+            
+            const endpoint = currentTVGenreFilter 
+                ? `/discover/tv?language=ar-SA&with_genres=${currentTVGenreFilter}&sort_by=vote_average.desc&page=${currentTVPage}&vote_count.gte=50`
+                : `/discover/tv?language=ar-SA&sort_by=vote_average.desc&page=${currentTVPage}&vote_count.gte=50`;
+            
+            const data = await fetchTMDB(endpoint);
+            if (data.results) {
+                displayTVInGrid('allTVGrid', data.results);
+                document.getElementById('loadMoreTVBtn').style.display = data.page < data.total_pages ? 'inline-flex' : 'none';
+            }
             loadTVCategories();
+        }
+
+        function loadMoreMovies() {
+            currentMoviePage++;
+            const grid = document.getElementById('allMoviesGrid');
+            
+            const endpoint = currentGenreFilter 
+                ? `/discover/movie?language=ar-SA&with_genres=${currentGenreFilter}&sort_by=vote_average.desc&page=${currentMoviePage}&vote_count.gte=50`
+                : `/discover/movie?language=ar-SA&sort_by=vote_average.desc&page=${currentMoviePage}&vote_count.gte=50`;
+            
+            fetchTMDB(endpoint).then(data => {
+                if (data.results) {
+                    data.results.forEach(movie => grid.appendChild(createMovieCard(movie, 'movie')));
+                    document.getElementById('loadMoreBtn').style.display = data.page < data.total_pages ? 'inline-flex' : 'none';
+                }
+            });
+        }
+
+        function loadMoreTVShows() {
+            currentTVPage++;
+            const grid = document.getElementById('allTVGrid');
+            
+            const endpoint = currentTVGenreFilter 
+                ? `/discover/tv?language=ar-SA&with_genres=${currentTVGenreFilter}&sort_by=vote_average.desc&page=${currentTVPage}&vote_count.gte=50`
+                : `/discover/tv?language=ar-SA&sort_by=vote_average.desc&page=${currentTVPage}&vote_count.gte=50`;
+            
+            fetchTMDB(endpoint).then(data => {
+                if (data.results) {
+                    data.results.forEach(show => grid.appendChild(createMovieCard(show, 'tv')));
+                    document.getElementById('loadMoreTVBtn').style.display = data.page < data.total_pages ? 'inline-flex' : 'none';
+                }
+            });
         }
 
         function loadMovieCategories() {
@@ -1495,13 +1526,13 @@
             categoriesDiv.innerHTML = '';
             const mainGenres = [28, 12, 16, 35, 80, 18, 14, 27, 9648, 10749, 878, 53];
             const allTab = document.createElement('button');
-            allTab.className = 'category-tab active';
+            allTab.className = 'category-tab' + (currentGenreFilter === null ? ' active' : '');
             allTab.textContent = 'الكل';
             allTab.onclick = () => filterMovies(null, allTab);
             categoriesDiv.appendChild(allTab);
             mainGenres.forEach(genreId => {
                 const tab = document.createElement('button');
-                tab.className = 'category-tab';
+                tab.className = 'category-tab' + (currentGenreFilter === genreId ? ' active' : '');
                 tab.textContent = genres[genreId];
                 tab.onclick = () => filterMovies(genreId, tab);
                 categoriesDiv.appendChild(tab);
@@ -1513,13 +1544,13 @@
             categoriesDiv.innerHTML = '';
             const mainGenres = [10759, 16, 35, 80, 18, 10751, 10762, 9648, 10765];
             const allTab = document.createElement('button');
-            allTab.className = 'category-tab active';
+            allTab.className = 'category-tab' + (currentTVGenreFilter === null ? ' active' : '');
             allTab.textContent = 'الكل';
             allTab.onclick = () => filterTV(null, allTab);
             categoriesDiv.appendChild(allTab);
             mainGenres.forEach(genreId => {
                 const tab = document.createElement('button');
-                tab.className = 'category-tab';
+                tab.className = 'category-tab' + (currentTVGenreFilter === genreId ? ' active' : '');
                 tab.textContent = genres[genreId] || 'نوع';
                 tab.onclick = () => filterTV(genreId, tab);
                 categoriesDiv.appendChild(tab);
@@ -1529,46 +1560,80 @@
         async function filterMovies(genreId, tabElement) {
             document.querySelectorAll('#movieCategories .category-tab').forEach(tab => tab.classList.remove('active'));
             if (tabElement) tabElement.classList.add('active');
+            currentGenreFilter = genreId;
+            currentMoviePage = 1;
+            
             const grid = document.getElementById('allMoviesGrid');
             grid.innerHTML = '<div class="loading-spinner"><div class="spinner"></div></div>';
-            const endpoint = genreId ? `/discover/movie?language=ar-SA&with_genres=${genreId}&sort_by=vote_average.desc&page=1&vote_count.gte=50` : '/discover/movie?language=ar-SA&sort_by=vote_average.desc&page=1&vote_count.gte=50';
+            
+            const endpoint = genreId 
+                ? `/discover/movie?language=ar-SA&with_genres=${genreId}&sort_by=vote_average.desc&page=1&vote_count.gte=50`
+                : '/discover/movie?language=ar-SA&sort_by=vote_average.desc&page=1&vote_count.gte=50';
+            
             const data = await fetchTMDB(endpoint);
-            if (data.results) displayMoviesInGrid('allMoviesGrid', data.results);
+            if (data.results) {
+                displayMoviesInGrid('allMoviesGrid', data.results);
+                document.getElementById('loadMoreBtn').style.display = data.page < data.total_pages ? 'inline-flex' : 'none';
+            }
         }
 
         async function filterTV(genreId, tabElement) {
             document.querySelectorAll('#tvCategories .category-tab').forEach(tab => tab.classList.remove('active'));
             if (tabElement) tabElement.classList.add('active');
+            currentTVGenreFilter = genreId;
+            currentTVPage = 1;
+            
             const grid = document.getElementById('allTVGrid');
             grid.innerHTML = '<div class="loading-spinner"><div class="spinner"></div></div>';
-            const endpoint = genreId ? `/discover/tv?language=ar-SA&with_genres=${genreId}&sort_by=vote_average.desc&page=1&vote_count.gte=50` : '/discover/tv?language=ar-SA&sort_by=vote_average.desc&page=1&vote_count.gte=50';
+            
+            const endpoint = genreId 
+                ? `/discover/tv?language=ar-SA&with_genres=${genreId}&sort_by=vote_average.desc&page=1&vote_count.gte=50`
+                : '/discover/tv?language=ar-SA&sort_by=vote_average.desc&page=1&vote_count.gte=50';
+            
             const data = await fetchTMDB(endpoint);
-            if (data.results) displayTVInGrid('allTVGrid', data.results);
+            if (data.results) {
+                displayTVInGrid('allTVGrid', data.results);
+                document.getElementById('loadMoreTVBtn').style.display = data.page < data.total_pages ? 'inline-flex' : 'none';
+            }
         }
 
         async function showAllMovies2026() {
             showMovies();
+            currentGenreFilter = null;
+            currentMoviePage = 1;
             const grid = document.getElementById('allMoviesGrid');
             grid.innerHTML = '<div class="loading-spinner"><div class="spinner"></div></div>';
             const data = await fetchTMDB('/discover/movie?language=ar-SA&sort_by=vote_average.desc&primary_release_year=2026&page=1&vote_count.gte=50');
-            if (data.results) displayMoviesInGrid('allMoviesGrid', data.results);
+            if (data.results) {
+                displayMoviesInGrid('allMoviesGrid', data.results);
+                document.getElementById('loadMoreBtn').style.display = 'none';
+            }
         }
 
         async function showAllTopRated() {
             showMovies();
+            currentGenreFilter = null;
+            currentMoviePage = 1;
             const grid = document.getElementById('allMoviesGrid');
             grid.innerHTML = '<div class="loading-spinner"><div class="spinner"></div></div>';
             const data = await fetchTMDB('/movie/top_rated?language=ar-SA&page=1&vote_count.gte=100');
-            if (data.results) displayMoviesInGrid('allMoviesGrid', data.results);
+            if (data.results) {
+                displayMoviesInGrid('allMoviesGrid', data.results);
+                document.getElementById('loadMoreBtn').style.display = 'none';
+            }
         }
 
         async function showAllMovies() {
             showMovies();
+            currentGenreFilter = null;
+            currentMoviePage = 1;
             await loadAllMovies();
         }
 
         async function showAllTVShows() {
             showTVShows();
+            currentTVGenreFilter = null;
+            currentTVPage = 1;
             await loadAllTVShows();
         }
 
@@ -1649,7 +1714,6 @@
         async function showActorPage(actorId) {
             try {
                 const actorData = await fetchTMDB(`/person/${actorId}?language=ar-SA&append_to_response=combined_credits`);
-                
                 document.getElementById('movieDetailsPage').classList.remove('active');
                 document.getElementById('actorPage').classList.add('active');
                 
@@ -1657,29 +1721,24 @@
                 document.getElementById('actorPhoto').src = photoUrl;
                 document.getElementById('actorName').textContent = actorData.name;
                 document.getElementById('actorBio').textContent = actorData.biography || 'لا توجد سيرة ذاتية متاحة';
-                
                 document.getElementById('actorBirthday').textContent = actorData.birthday ? `🎂 ${actorData.birthday}` : '';
                 document.getElementById('actorBirthplace').textContent = actorData.place_of_birth ? `📍 ${actorData.place_of_birth}` : '';
                 
                 const moviesGrid = document.getElementById('actorMoviesGrid');
                 moviesGrid.innerHTML = '';
-                
                 if (actorData.combined_credits && actorData.combined_credits.cast) {
                     const sortedMovies = actorData.combined_credits.cast
                         .filter(item => item.poster_path)
                         .sort((a, b) => (b.vote_average || 0) - (a.vote_average || 0))
                         .slice(0, 20);
-                    
                     sortedMovies.forEach(item => {
                         const type = item.media_type || 'movie';
                         moviesGrid.appendChild(createMovieCard(item, type));
                     });
                 }
-                
                 document.body.style.overflow = 'hidden';
             } catch (error) {
                 console.error('Error:', error);
-                showToast('حدث خطأ في تحميل صفحة الممثل');
             }
         }
 
@@ -1765,7 +1824,6 @@
             currentServer = index;
             document.querySelectorAll('.server-btn').forEach((btn, i) => btn.classList.toggle('active', i === index));
             if (!currentMovie || !currentMovie.id) return;
-            
             const server = servers[index];
             const type = currentMovie.type || 'movie';
             const movieId = currentMovie.id;
@@ -1776,8 +1834,6 @@
                     url = server.movieUrl + movieId;
                 } else if (server.name === 'MultiEmbed') {
                     url = server.movieUrl + movieId + '&tmdb=1';
-                } else if (server.name === '2Embed' || server.name === 'MovieBed') {
-                    url = server.movieUrl + movieId;
                 } else {
                     url = server.movieUrl + movieId;
                 }
@@ -1792,7 +1848,6 @@
                     url = server.tvUrl + movieId + '/1/1';
                 }
             }
-            
             document.getElementById('playerFrame').src = url;
         }
 
@@ -1823,6 +1878,7 @@
             const data = await fetchTMDB(`/search/multi?language=ar-SA&query=${encodeURIComponent(query)}&page=1&include_adult=false`);
             if (data.results && data.results.length > 0) {
                 displayMoviesInGrid('allMoviesGrid', data.results);
+                document.getElementById('loadMoreBtn').style.display = 'none';
             } else {
                 grid.innerHTML = `<div style="text-align: center; padding: 40px; grid-column: 1/-1;">لا توجد نتائج</div>`;
             }
