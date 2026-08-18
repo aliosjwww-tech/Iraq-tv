@@ -1,28 +1,4 @@
-# robots.txt لموقع عراق تي في
 User-agent: *
 Allow: /
-Disallow: /admin/
-Disallow: /private/
-Disallow: /api/
 
-# منع محركات البحث من فهرسة الملفات الحساسة
-Disallow: /*.json$
-Disallow: /*.xml$
-Allow: /sitemap.xml
-
-# السماح لجميع محركات البحث
-User-agent: Googlebot
-Allow: /
-Crawl-delay: 1
-
-User-agent: Bingbot
-Allow: /
-Crawl-delay: 1
-
-# منع الفهرسة للمسارات المؤقتة
-Disallow: /search?
-Disallow: /player?
-
-# Sitemap
 Sitemap: https://aliosjwww-tech.github.io/Iraq-tv/sitemap.xml
-
