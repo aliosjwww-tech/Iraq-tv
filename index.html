@@ -4,23 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     
-    <title>عراق تي في | Iraq TV - مشاهدة أفلام ومسلسلات أون لاين بدون إعلانات</title>
-    <meta name="description" content="عراق تي في - منصة عراقية لمشاهدة أحدث الأفلام والمسلسلات أون لاين بجودة عالية وبدون إعلانات مزعجة. أفلام 2026، مسلسلات حصرية، 10 سيرفرات متعددة.">
-    <meta name="keywords" content="عراق تي في, Iraq TV, مشاهدة أفلام, مسلسلات, أفلام 2026, أفلام أون لاين, سيرفرات متعددة, منصة عراقية">
+    <title>عراق تي في | Iraq TV - مشاهدة أفلام ومسلسلات مع ترجمة عربية</title>
+    <meta name="description" content="عراق تي في - منصة عراقية لمشاهدة الأفلام والمسلسلات مع ترجمة عربية دائمة وجودة عالية وبدون إعلانات">
+    <meta name="keywords" content="عراق تي في, Iraq TV, أفلام مترجمة, مسلسلات مترجمة, ترجمة عربية, مشاهدة أون لاين">
     <meta name="author" content="علي علاء">
     <meta name="language" content="Arabic">
     <meta http-equiv="content-language" content="ar">
     
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="عراق تي في - Iraq TV">
-    <meta property="og:title" content="عراق تي في | مشاهدة أفلام ومسلسلات أون لاين">
-    <meta property="og:description" content="منصة عراقية لمشاهدة أحدث الأفلام والمسلسلات بجودة عالية وبدون إعلانات">
+    <meta property="og:title" content="عراق تي في | أفلام ومسلسلات مترجمة">
+    <meta property="og:description" content="مشاهدة الأفلام والمسلسلات مع ترجمة عربية دائمة">
     <meta property="og:url" content="https://aliosjwww-tech.github.io/Iraq-tv/">
     <meta property="og:locale" content="ar_AR">
     
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="عراق تي في | مشاهدة أفلام ومسلسلات">
-    <meta name="twitter:description" content="منصة عراقية لمشاهدة الأفلام والمسلسلات بدون إعلانات">
+    <meta name="twitter:title" content="عراق تي في | أفلام ومسلسلات مترجمة">
+    <meta name="twitter:description" content="مشاهدة مع ترجمة عربية دائمة">
     
     <link rel="icon" type="image/svg+xml" href="https://aliosjwww-tech.github.io/Iraq-tv/favicon.svg">
     <link rel="shortcut icon" href="https://aliosjwww-tech.github.io/Iraq-tv/favicon.svg">
@@ -34,7 +34,7 @@
         "@type": "WebSite",
         "name": "عراق تي في - Iraq TV",
         "url": "https://aliosjwww-tech.github.io/Iraq-tv/",
-        "description": "منصة عراقية لمشاهدة الأفلام والمسلسلات أون لاين",
+        "description": "منصة عراقية لمشاهدة الأفلام والمسلسلات مع ترجمة عربية",
         "inLanguage": "ar"
     }
     </script>
@@ -56,9 +56,7 @@
             --glass-border: rgba(255, 255, 255, 0.1);
             --glass-hover: rgba(255, 255, 255, 0.08);
             --accent: #e50914;
-            --accent-hover: #ff0f1f;
             --accent-gradient: linear-gradient(135deg, #e50914, #ff4b4b);
-            --gold: #ffd700;
             --text-primary: #ffffff;
             --text-secondary: #b0b0b8;
             --text-muted: #808088;
@@ -1054,7 +1052,7 @@
         </div>
 
         <div id="moviesPage" style="display: none;">
-            <div class="section-header"><h2 class="section-title">جميع الأفلام</h2></div>
+            <div class="section-header"><h2 class="section-title">جميع الأفلام المترجمة</h2></div>
             <div class="category-tabs" id="movieCategories"></div>
             <div class="movie-grid-static" id="allMoviesGrid"></div>
             <div style="text-align: center; margin: 20px 0;">
@@ -1063,7 +1061,7 @@
         </div>
 
         <div id="tvPage" style="display: none;">
-            <div class="section-header"><h2 class="section-title">جميع المسلسلات</h2></div>
+            <div class="section-header"><h2 class="section-title">جميع المسلسلات المترجمة</h2></div>
             <div class="category-tabs" id="tvCategories"></div>
             <div class="movie-grid-static" id="allTVGrid"></div>
             <div style="text-align: center; margin: 20px 0;">
@@ -1114,10 +1112,10 @@
             </div>
             
             <div class="server-section">
-                <h3>🎬 سيرفرات المشاهدة (10 سيرفرات)</h3>
+                <h3>🎬 سيرفرات المشاهدة مع ترجمة عربية (10 سيرفرات)</h3>
                 <div class="server-buttons" id="serverButtons"></div>
                 <div class="player-embed">
-                    <iframe id="playerFrame" src="" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+                    <iframe id="playerFrame" src="" allowfullscreen allow="autoplay; encrypted-media; picture-in-picture"></iframe>
                 </div>
             </div>
         </div>
@@ -1151,17 +1149,18 @@
         const TMDB_IMAGE_BASE = 'https://image.tmdb.org/t/p/w500';
         const TMDB_IMAGE_ORIGINAL = 'https://image.tmdb.org/t/p/original';
 
+        // أفضل 10 سيرفرات مع ترجمة عربية
         const servers = [
-            { id: 1, name: 'VidSrc.cc', desc: 'الأفضل والأسرع', movieUrl: 'https://vidsrc.cc/v2/embed/movie/', tvUrl: 'https://vidsrc.cc/v2/embed/tv/' },
-            { id: 2, name: 'Embed.su', desc: 'خفيف ومرتب', movieUrl: 'https://embed.su/embed/movie/', tvUrl: 'https://embed.su/embed/tv/' },
-            { id: 3, name: 'VidSrc.me', desc: 'كلاسيكي ومضمون', movieUrl: 'https://vidsrc.me/embed/movie?tmdb=', tvUrl: 'https://vidsrc.me/embed/tv?tmdb=' },
-            { id: 4, name: 'AutoEmbed', desc: 'يدعم الجودات', movieUrl: 'https://player.autoembed.cc/embed/movie/', tvUrl: 'https://player.autoembed.cc/embed/tv/' },
-            { id: 5, name: '2Embed', desc: 'سيرفر قوي', movieUrl: 'https://www.2embed.cc/embed/', tvUrl: 'https://www.2embed.cc/embedtv/' },
-            { id: 6, name: 'VidZee', desc: 'سريع وبسيط', movieUrl: 'https://vidzee.to/embed/movie/', tvUrl: 'https://vidzee.to/embed/tv/' },
-            { id: 7, name: 'MovieBed', desc: 'ممتاز للاحتياط', movieUrl: 'https://moviebed.net/embed/', tvUrl: 'https://moviebed.net/embedtv/' },
-            { id: 8, name: 'VidSrc.vip', desc: 'بديل قوي وثابت', movieUrl: 'https://vidsrc.vip/embed/movie/', tvUrl: 'https://vidsrc.vip/embed/tv/' },
-            { id: 9, name: 'SuperEmbed', desc: 'يفتح بسرعة', movieUrl: 'https://superembed.stream/embed/movie/', tvUrl: 'https://superembed.stream/embed/tv/' },
-            { id: 10, name: 'MultiEmbed', desc: 'يجمع عدة مصادر', movieUrl: 'https://multiembed.mov/?video_id=', tvUrl: 'https://multiembed.mov/?video_id=' }
+            { id: 1, name: '👑 VidSrc.cc', desc: '1080p - ترجمة عربية', movieUrl: 'https://vidsrc.cc/v2/embed/movie/', tvUrl: 'https://vidsrc.cc/v2/embed/tv/' },
+            { id: 2, name: '⚡ Embed.su', desc: '720p - بدون إعلانات', movieUrl: 'https://embed.su/embed/movie/', tvUrl: 'https://embed.su/embed/tv/' },
+            { id: 3, name: '🎯 MultiEmbed', desc: '1080p - عربي + إنجليزي', movieUrl: 'https://multiembed.mov/?video_id=', tvUrl: 'https://multiembed.mov/?video_id=' },
+            { id: 4, name: '🚀 AutoEmbed', desc: '1080p - ترجمة تلقائية', movieUrl: 'https://player.autoembed.cc/embed/movie/', tvUrl: 'https://player.autoembed.cc/embed/tv/' },
+            { id: 5, name: '💎 VidSrc.vip', desc: '1080p - ترجمة ثابتة', movieUrl: 'https://vidsrc.vip/embed/movie/', tvUrl: 'https://vidsrc.vip/embed/tv/' },
+            { id: 6, name: '🌟 VidSrc.me', desc: '720p - ترجمة كلاسيكية', movieUrl: 'https://vidsrc.me/embed/movie?tmdb=', tvUrl: 'https://vidsrc.me/embed/tv?tmdb=' },
+            { id: 7, name: '🔥 SuperEmbed', desc: '1080p - سريع جداً', movieUrl: 'https://superembed.stream/embed/movie/', tvUrl: 'https://superembed.stream/embed/tv/' },
+            { id: 8, name: '📺 VidZee', desc: '720p - خفيف', movieUrl: 'https://vidzee.to/embed/movie/', tvUrl: 'https://vidzee.to/embed/tv/' },
+            { id: 9, name: '🎬 2Embed', desc: '1080p - مستقر', movieUrl: 'https://www.2embed.cc/embed/', tvUrl: 'https://www.2embed.cc/embedtv/' },
+            { id: 10, name: '🛡️ MovieBed', desc: '720p - احتياطي', movieUrl: 'https://moviebed.net/embed/', tvUrl: 'https://moviebed.net/embedtv/' }
         ];
 
         const genres = {
@@ -1492,11 +1491,9 @@
         function loadMoreMovies() {
             currentMoviePage++;
             const grid = document.getElementById('allMoviesGrid');
-            
             const endpoint = currentGenreFilter 
                 ? `/discover/movie?language=ar-SA&with_genres=${currentGenreFilter}&sort_by=vote_average.desc&page=${currentMoviePage}&vote_count.gte=50`
                 : `/discover/movie?language=ar-SA&sort_by=vote_average.desc&page=${currentMoviePage}&vote_count.gte=50`;
-            
             fetchTMDB(endpoint).then(data => {
                 if (data.results) {
                     data.results.forEach(movie => grid.appendChild(createMovieCard(movie, 'movie')));
@@ -1508,11 +1505,9 @@
         function loadMoreTVShows() {
             currentTVPage++;
             const grid = document.getElementById('allTVGrid');
-            
             const endpoint = currentTVGenreFilter 
                 ? `/discover/tv?language=ar-SA&with_genres=${currentTVGenreFilter}&sort_by=vote_average.desc&page=${currentTVPage}&vote_count.gte=50`
                 : `/discover/tv?language=ar-SA&sort_by=vote_average.desc&page=${currentTVPage}&vote_count.gte=50`;
-            
             fetchTMDB(endpoint).then(data => {
                 if (data.results) {
                     data.results.forEach(show => grid.appendChild(createMovieCard(show, 'tv')));
@@ -1562,14 +1557,11 @@
             if (tabElement) tabElement.classList.add('active');
             currentGenreFilter = genreId;
             currentMoviePage = 1;
-            
             const grid = document.getElementById('allMoviesGrid');
             grid.innerHTML = '<div class="loading-spinner"><div class="spinner"></div></div>';
-            
             const endpoint = genreId 
                 ? `/discover/movie?language=ar-SA&with_genres=${genreId}&sort_by=vote_average.desc&page=1&vote_count.gte=50`
                 : '/discover/movie?language=ar-SA&sort_by=vote_average.desc&page=1&vote_count.gte=50';
-            
             const data = await fetchTMDB(endpoint);
             if (data.results) {
                 displayMoviesInGrid('allMoviesGrid', data.results);
@@ -1582,14 +1574,11 @@
             if (tabElement) tabElement.classList.add('active');
             currentTVGenreFilter = genreId;
             currentTVPage = 1;
-            
             const grid = document.getElementById('allTVGrid');
             grid.innerHTML = '<div class="loading-spinner"><div class="spinner"></div></div>';
-            
             const endpoint = genreId 
                 ? `/discover/tv?language=ar-SA&with_genres=${genreId}&sort_by=vote_average.desc&page=1&vote_count.gte=50`
                 : '/discover/tv?language=ar-SA&sort_by=vote_average.desc&page=1&vote_count.gte=50';
-            
             const data = await fetchTMDB(endpoint);
             if (data.results) {
                 displayTVInGrid('allTVGrid', data.results);
@@ -1804,7 +1793,7 @@
                 url = server.tvUrl + `${tvId}/${seasonNumber}/${episodeNumber}`;
             }
             document.getElementById('playerFrame').src = url;
-            showToast(`تشغيل الحلقة ${episodeNumber} - ${server.name}`);
+            showToast(`تشغيل الحلقة ${episodeNumber} - ${server.name} مع ترجمة عربية`);
         }
 
         function setupServers(id, type) {
