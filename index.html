@@ -773,10 +773,6 @@
             color: var(--text-secondary);
             line-height: 1.8;
             margin-bottom: 15px;
-            display: -webkit-box;
-            -webkit-line-clamp: 6;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
         }
 
         .actor-meta {
@@ -1101,7 +1097,7 @@
             <button class="btn-favorite" id="favBtn" onclick="toggleFavorite()">⭐ إضافة إلى المفضلة</button>
             
             <div class="cast-section" id="castSection" style="display: none;">
-                <h3>🎭 الممثلون (اضغط على اسم الممثل لعرض صفحته)</h3>
+                <h3>🎭 الممثلون</h3>
                 <div class="cast-grid" id="castGrid"></div>
             </div>
             
@@ -1112,7 +1108,7 @@
             </div>
             
             <div class="server-section">
-                <h3>🎬 سيرفرات المشاهدة مع ترجمة عربية (10 سيرفرات)</h3>
+                <h3>🎬 سيرفرات المشاهدة مع ترجمة عربية</h3>
                 <div class="server-buttons" id="serverButtons"></div>
                 <div class="player-embed">
                     <iframe id="playerFrame" src="" allowfullscreen allow="autoplay; encrypted-media; picture-in-picture"></iframe>
@@ -1148,6 +1144,90 @@
         const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
         const TMDB_IMAGE_BASE = 'https://image.tmdb.org/t/p/w500';
         const TMDB_IMAGE_ORIGINAL = 'https://image.tmdb.org/t/p/original';
+
+        // ============================================
+        // نظام دعم الترميز العربي (UTF-8 + Windows-1256)
+        // ============================================
+        function fixArabicEncoding(text) {
+            if (!text) return text;
+            
+            const windows1256Map = {
+                '\u00C7': 'ا', '\u00C8': 'ب', '\u00C9': 'ت', '\u00CA': 'ث',
+                '\u00CB': 'ج', '\u00CC': 'ح', '\u00CD': 'خ', '\u00CE': 'د',
+                '\u00CF': 'ذ', '\u00D0': 'ر', '\u00D1': 'ز', '\u00D2': 'س',
+                '\u00D3': 'ش', '\u00D4': 'ص', '\u00D5': 'ض', '\u00D6': 'ط',
+                '\u00D7': 'ظ', '\u00D8': 'ع', '\u00D9': 'غ', '\u00DA': 'ف',
+                '\u00DB': 'ق', '\u00DC': 'ك', '\u00DD': 'ل', '\u00DE': 'م',
+                '\u00DF': 'ن', '\u00E0': 'ه', '\u00E1': 'و', '\u00E2': 'ي',
+                '\u00E3': 'ة', '\u00E4': 'أ', '\u00E5': 'إ', '\u00E6': 'آ',
+                '\u00E7': 'ئ', '\u00E8': 'ؤ', '\u00E9': 'ء', '\u00EA': 'ى',
+                '\u00EB': '؟', '\u00EC': '،', '\u00ED': 'ـ'
+            };
+            
+            let result = text;
+            for (const [key, value] of Object.entries(windows1256Map)) {
+                result = result.replace(new RegExp(key, 'g'), value);
+            }
+            
+            result = result.replace(/\?\?+/g, '؟');
+            result = result.replace(/\?/g, '؟');
+            result = result.replace(/Ã|Â|â/g, '');
+            
+            return result;
+        }
+
+        function convertSRTtoVTT(srtContent) {
+            srtContent = fixArabicEncoding(srtContent);
+            let vttContent = 'WEBVTT\n\n';
+            vttContent += srtContent
+                .replace(/\r\n/g, '\n')
+                .replace(/(\d{2}:\d{2}:\d{2}),(\d{3})/g, '$1.$2');
+            return vttContent;
+        }
+
+        function fixVTTEncoding(vttContent) {
+            vttContent = fixArabicEncoding(vttContent);
+            if (!vttContent.startsWith('WEBVTT')) {
+                vttContent = 'WEBVTT\n\n' + vttContent;
+            }
+            return vttContent;
+        }
+
+        function createSubtitleBlob(subtitleText, type = 'vtt') {
+            const fixedText = fixArabicEncoding(subtitleText);
+            const blob = new Blob([fixedText], { type: `text/${type};charset=utf-8` });
+            return URL.createObjectURL(blob);
+        }
+
+        async function loadSubtitle(url) {
+            try {
+                const response = await fetch(url);
+                const buffer = await response.arrayBuffer();
+                let text = new TextDecoder('utf-8', { fatal: false }).decode(buffer);
+                text = fixArabicEncoding(text);
+                const blob = new Blob([text], { type: 'text/vtt;charset=utf-8' });
+                return URL.createObjectURL(blob);
+            } catch (error) {
+                console.error('Error loading subtitle:', error);
+                return null;
+            }
+        }
+
+        function isValidArabic(text) {
+            if (!text) return false;
+            const arabicRegex = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/;
+            return arabicRegex.test(text);
+        }
+
+        function cleanArabicText(text) {
+            if (!text) return text;
+            return text
+                .replace(/[^\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\s\d\w.,!؟:;()\[\]{}'"-]/g, '')
+                .replace(/\s+/g, ' ')
+                .trim();
+        }
+
+        console.log('✅ نظام دعم الترميز العربي مفعل - UTF-8 + Windows-1256');
 
         // أفضل 10 سيرفرات مع ترجمة عربية
         const servers = [
