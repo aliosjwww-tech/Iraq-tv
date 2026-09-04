@@ -19,7 +19,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Loading Screen */
 .loading-screen {
     position: fixed;
     inset: 0;
@@ -47,7 +46,6 @@ body {
 
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* Navbar */
 .navbar {
     display: flex;
     align-items: center;
@@ -126,7 +124,6 @@ body {
 
 .dropdown-item:hover { background: var(--glass); }
 
-/* Hero Slider */
 .hero-slider {
     position: relative;
     height: 450px;
@@ -169,7 +166,6 @@ body {
 
 .hero-info .rating { color: var(--gold); font-weight: 700; }
 
-/* Movie Grid */
 .section { padding: 20px; }
 
 .section-header {
@@ -231,8 +227,6 @@ body {
 
 .movie-card:hover .info { opacity: 1; }
 
-.movie-card .info h3 { font-size: 0.85rem; }
-
 .movie-card .badge {
     position: absolute;
     top: 10px;
@@ -243,7 +237,6 @@ body {
     font-size: 0.7rem;
 }
 
-/* Player Modal */
 .player-modal {
     position: fixed;
     inset: 0;
@@ -322,7 +315,7 @@ body {
     max-height: 200px;
 }
 
-.episode-btn {
+.episode-btn, .season-btn {
     padding: 8px 15px;
     background: var(--glass);
     border: 1px solid var(--border);
@@ -330,44 +323,15 @@ body {
     cursor: pointer;
     color: var(--text);
     font-family: inherit;
-    font-size: 0.85rem;
 }
 
-.episode-btn.active {
+.season-btn.active, .episode-btn.active {
     background: var(--accent);
     border-color: var(--accent);
 }
 
-/* Season Selector */
-.season-selector {
-    display: flex;
-    gap: 10px;
-    padding: 10px 15px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.season-btn {
-    padding: 8px 20px;
-    background: var(--glass);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    cursor: pointer;
-    color: var(--text);
-    font-family: inherit;
-}
-
-.season-btn.active {
-    background: var(--gold);
-    border-color: var(--gold);
-    color: #000;
-    font-weight: 700;
-}
-
-/* Responsive */
 @media (max-width: 768px) {
     .navbar { flex-direction: column; padding: 10px; }
     .hero-slider { height: 300px; margin: 10px; }
-    .hero-info h1 { font-size: 1.5rem; }
     .movie-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; }
 }
