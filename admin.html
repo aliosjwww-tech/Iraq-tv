@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم | عراق تي في</title>
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --bg2: #121218;
+            --glass: rgba(255,255,255,0.05);
+            --border: rgba(255,255,255,0.1);
+            --accent: #e50914;
+            --text: #fff;
+            --text2: #b0b0b8;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', 'Tajawal', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+        
+        .card {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+        
+        .card h2 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: var(--text);
+            font-family: inherit;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+        
+        button {
+            padding: 12px 25px;
+            background: var(--accent);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        
+        button:hover { opacity: 0.9; }
+        
+        .result-card {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: var(--glass);
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        
+        .result-card img {
+            width: 80px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        
+        .server-inputs {
+            display: grid;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .generated-json {
+            background: #000;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 15px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            white-space: pre-wrap;
+            word-break: break-all;
+            max-height: 300px;
+            overflow-y: auto;
+            direction: ltr;
+            text-align: left;
+        }
+        
+        .copy-btn {
+            background: #4CAF50;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔐 لوحة تحكم عراق تي في</h1>
+        
+        <!-- Login -->
+        <div class="card" id="loginCard">
+            <h2>تسجيل الدخول</h2>
+            <input type="password" id="passwordInput" placeholder="كلمة المرور">
+            <button onclick="login()">دخول</button>
+        </div>
+        
+        <!-- Admin Panel -->
+        <div id="adminPanel" style="display: none;">
+            <!-- Search -->
+            <div class="card">
+                <h2>🔍 بحث عن فيلم أو مسلسل</h2>
+                <input type="text" id="tmdbSearch" placeholder="اكتب اسم العمل...">
+                <button onclick="searchTMDB()">بحث</button>
+                <div id="searchResults"></div>
+            </div>
+            
+            <!-- Selected Item -->
+            <div class="card" id="selectedCard" style="display: none;">
+                <h2>✅ العمل المحدد</h2>
+                <div id="selectedInfo"></div>
+                
+                <div id="movieServers">
+                    <h3>روابط السيرفرات</h3>
+                    <div class="server-inputs">
+                        <input type="text" id="server1" placeholder="سيرفر 1">
+                        <input type="text" id="server2" placeholder="سيرفر 2">
+                        <input type="text" id="server3" placeholder="سيرفر 3">
+                        <input type="text" id="server4" placeholder="سيرفر 4">
+                        <input type="text" id="server5" placeholder="سيرفر 5">
+                    </div>
+                </div>
+                
+                <div id="seriesServers" style="display: none;">
+                    <h3>حلقات المسلسل</h3>
+                    <input type="number" id="seasonNum" placeholder="رقم الموسم" min="1">
+                    <input type="number" id="episodeNum" placeholder="رقم الحلقة" min="1">
+                    <button onclick="addEpisode()">إضافة حلقة</button>
+                    <div id="episodesList"></div>
+                </div>
+                
+                <button onclick="generateJSON()" style="margin-top: 20px;">📋 توليد JSON</button>
+                <button class="copy-btn" onclick="copyJSON()">📄 نسخ JSON</button>
+                <div class="generated-json" id="jsonOutput"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>
