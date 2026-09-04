@@ -2,45 +2,38 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>عراق تي في | Iraq TV</title>
-    <meta name="description" content="منصة عراقية لمشاهدة الأفلام والمسلسلات">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عراق تي في | IraqTV</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <!-- Loading Screen -->
+
     <div class="loading-screen" id="loadingScreen">
         <div class="loader"></div>
     </div>
 
-    <!-- Navbar -->
     <nav class="navbar">
         <div class="logo" onclick="showHome()">📺 عراق تي في</div>
         <div class="search-box">
             <span>🔍</span>
-            <input type="text" id="searchInput" placeholder="ابحث...">
+            <input type="text" id="searchInput" placeholder="ابحث عن فيلم أو مسلسل...">
         </div>
-        <div class="nav-actions">
-            <button class="menu-btn" onclick="toggleMenu()">⋮</button>
-            <div class="dropdown-menu" id="dropdownMenu">
-                <div class="dropdown-item" onclick="showHome()">🏠 الرئيسية</div>
-                <div class="dropdown-item" onclick="showMovies()">🎬 أفلام</div>
-                <div class="dropdown-item" onclick="showSeries()">📺 مسلسلات</div>
-                <div class="dropdown-item" onclick="showFavorites()">❤️ المفضلة</div>
-                <div class="dropdown-item" onclick="window.location.href='admin.html'">🔐 لوحة التحكم</div>
-            </div>
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+        <div class="dropdown-menu" id="dropdownMenu">
+            <div class="dropdown-item" onclick="showHome()">🏠 الرئيسية</div>
+            <div class="dropdown-item" onclick="showMovies()">🎬 أفلام</div>
+            <div class="dropdown-item" onclick="showSeries()">📺 مسلسلات</div>
+            <div class="dropdown-item" onclick="showFavorites()">❤️ المفضلة</div>
+            <div class="dropdown-item" onclick="window.location.href='admin.html'">🔐 لوحة التحكم</div>
         </div>
     </nav>
 
-    <!-- Hero Slider -->
     <div class="hero-slider" id="heroSlider"></div>
 
-    <!-- Sections -->
     <div class="section">
         <div class="section-header">
             <h2>🔥 الأكثر مشاهدة</h2>
-            <button onclick="loadMore('trending')">المزيد</button>
         </div>
         <div class="movie-grid" id="trendingGrid"></div>
     </div>
@@ -48,7 +41,7 @@
     <div class="section">
         <div class="section-header">
             <h2>🎬 أحدث الأفلام</h2>
-            <button onclick="loadMore('movies')">المزيد</button>
+            <button onclick="showMovies()">المزيد</button>
         </div>
         <div class="movie-grid" id="moviesGrid"></div>
     </div>
@@ -56,24 +49,23 @@
     <div class="section">
         <div class="section-header">
             <h2>📺 أحدث المسلسلات</h2>
-            <button onclick="loadMore('series')">المزيد</button>
+            <button onclick="showSeries()">المزيد</button>
         </div>
         <div class="movie-grid" id="seriesGrid"></div>
     </div>
 
-    <!-- Player Modal -->
     <div class="player-modal" id="playerModal">
         <div class="player-header">
             <button class="close-btn" onclick="closePlayer()">✕</button>
-            <span class="player-title" id="playerTitle"></span>
+            <div class="player-title" id="playerTitle">اسم الفيلم</div>
         </div>
         <div class="server-tabs" id="serverTabs"></div>
+        <div class="episode-selector" id="episodeSelector"></div>
         <div class="player-container">
             <iframe id="playerFrame" src="" allowfullscreen></iframe>
         </div>
-        <div class="episode-selector" id="episodeSelector"></div>
     </div>
 
-    <script src="js/main.js"></script>
+    <script src="./js/main.js"></script>
 </body>
 </html>
