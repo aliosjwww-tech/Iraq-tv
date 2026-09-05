@@ -5,14 +5,212 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>عراق تي في | IraqTV</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --bg2: #121218;
+            --glass: rgba(255,255,255,0.05);
+            --border: rgba(255,255,255,0.1);
+            --accent: #e50914;
+            --gold: #ffd700;
+            --text: #fff;
+            --text2: #b0b0b8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', 'Tajawal', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .loading-screen {
+            position: fixed;
+            inset: 0;
+            background: var(--bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+
+        .loading-screen.hidden { opacity: 0; visibility: hidden; }
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 15px 25px;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            cursor: pointer;
+            color: var(--accent);
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            padding: 10px 20px;
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .search-box input {
+            background: none;
+            border: none;
+            outline: none;
+            color: var(--text);
+            width: 100%;
+            font-family: inherit;
+        }
+
+        .menu-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 60px;
+            left: 25px;
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            min-width: 200px;
+            display: none;
+            z-index: 1000;
+            overflow: hidden;
+        }
+
+        .dropdown-menu.active { display: block; }
+
+        .dropdown-item {
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .dropdown-item:hover { background: var(--glass); }
+
+        .hero-slider {
+            position: relative;
+            height: 350px;
+            margin: 20px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: var(--bg2);
+        }
+
+        .section { padding: 20px; }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .section-header h2 { font-size: 1.3rem; }
+
+        .section-header button {
+            padding: 8px 20px;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 15px;
+        }
+
+        .empty-msg {
+            color: var(--text2);
+            padding: 20px 0;
+            font-size: 0.95rem;
+        }
+
+        .player-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 2000;
+            display: none;
+            flex-direction: column;
+        }
+
+        .player-modal.active { display: flex; }
+
+        .player-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            background: var(--bg2);
+        }
+
+        .close-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .player-container { flex: 1; }
+        .player-container iframe { width: 100%; height: 100%; border: none; }
+    </style>
 </head>
 <body>
 
+    <!-- شاشة التحميل -->
     <div class="loading-screen" id="loadingScreen">
         <div class="loader"></div>
     </div>
 
+    <!-- النافبار -->
     <nav class="navbar">
         <div class="logo" onclick="showHome()">📺 عراق تي في</div>
         <div class="search-box">
@@ -29,13 +227,17 @@
         </div>
     </nav>
 
+    <!-- السلايدر -->
     <div class="hero-slider" id="heroSlider"></div>
 
+    <!-- الأقسام -->
     <div class="section">
         <div class="section-header">
             <h2>🔥 الأكثر مشاهدة</h2>
         </div>
-        <div class="movie-grid" id="trendingGrid"></div>
+        <div class="movie-grid" id="trendingGrid">
+            <div class="empty-msg">لا توجد أعمال مضافة بعد.</div>
+        </div>
     </div>
 
     <div class="section">
@@ -43,7 +245,9 @@
             <h2>🎬 أحدث الأفلام</h2>
             <button onclick="showMovies()">المزيد</button>
         </div>
-        <div class="movie-grid" id="moviesGrid"></div>
+        <div class="movie-grid" id="moviesGrid">
+            <div class="empty-msg">لا توجد أعمال مضافة بعد.</div>
+        </div>
     </div>
 
     <div class="section">
@@ -51,21 +255,22 @@
             <h2>📺 أحدث المسلسلات</h2>
             <button onclick="showSeries()">المزيد</button>
         </div>
-        <div class="movie-grid" id="seriesGrid"></div>
+        <div class="movie-grid" id="seriesGrid">
+            <div class="empty-msg">لا توجد أعمال مضافة بعد.</div>
+        </div>
     </div>
 
+    <!-- المشغل -->
     <div class="player-modal" id="playerModal">
         <div class="player-header">
             <button class="close-btn" onclick="closePlayer()">✕</button>
-            <div class="player-title" id="playerTitle">اسم الفيلم</div>
+            <div class="player-title" id="playerTitle">مشاهدة العمل</div>
         </div>
-        <div class="server-tabs" id="serverTabs"></div>
-        <div class="episode-selector" id="episodeSelector"></div>
         <div class="player-container">
             <iframe id="playerFrame" src="" allowfullscreen></iframe>
         </div>
     </div>
 
-    <script src="./js/main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
